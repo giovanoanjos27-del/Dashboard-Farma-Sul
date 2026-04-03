@@ -6,7 +6,7 @@
 <title>Dashboard Sell Out — Farma Sul</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#080e1a;color:#e2e8f0;min-height:100vh;font-size:14px;}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#060b12;color:#e2e8f0;min-height:100vh;font-size:14px;}
 
 /* HEADER */
 .header{padding:16px 24px 10px;border-bottom:0.5px solid rgba(255,255,255,0.06);}
@@ -15,7 +15,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
 .header-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;background:rgba(59,130,246,0.1);color:#60a5fa;border:0.5px solid rgba(59,130,246,0.2);border-radius:20px;padding:3px 12px;margin-top:8px;}
 
 /* TABS */
-.ctabs{background:#080e1a;border-bottom:0.5px solid rgba(255,255,255,0.06);padding:0 24px;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.ctabs{background:#060b12;border-bottom:0.5px solid rgba(255,255,255,0.06);padding:0 24px;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .ctabs::-webkit-scrollbar{height:2px;}
 .ctabs::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);}
 .ctab{font-size:12px;font-weight:600;padding:10px 16px;border:none;border-bottom:2px solid transparent;background:transparent;color:#5a6478;cursor:pointer;white-space:nowrap;transition:all 0.15s;display:flex;align-items:center;gap:5px;letter-spacing:0.01em;}
@@ -56,7 +56,13 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
 /* Cards de gráfico */
 .cards-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 @media(max-width:700px){.cards-row{grid-template-columns:1fr;}}
-.card{background:linear-gradient(160deg,#0d1422 0%,#0a1020 100%);border-radius:14px;padding:20px;border:0.5px solid rgba(255,255,255,0.06);}
+.card{background:#0d1117;border-radius:14px;padding:20px;border:0.5px solid rgba(255,255,255,0.07);}
+/* Barra horizontal estilo dashboard */
+.hbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.hbar-label{font-size:12px;font-weight:600;color:#8b95a8;text-align:right;min-width:100px;max-width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
+.hbar-outer{flex:1;height:26px;background:rgba(255,255,255,0.05);border-radius:5px;overflow:hidden;}
+.hbar-inner{height:26px;border-radius:5px;display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:700;white-space:nowrap;transition:width .8s cubic-bezier(.4,0,.2,1);min-width:60px;}
+.hbar-right{font-size:11px;color:#5a6478;min-width:56px;text-align:right;flex-shrink:0;}
 .card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:10px;}
 .card-title{font-size:13px;font-weight:700;color:#c8ccda;line-height:1.3;}
 .card-sub{font-size:10px;color:#5a6478;margin-top:3px;}
@@ -166,7 +172,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
 <!-- TABS -->
 <div class="ctabs">
   <button class="ctab active" onclick="switchClient('nielsen',this)">Nielsen <span class="cdot cdot-live"></span></button>
-  <button class="ctab" onclick="switchClient('ol',this)">Geradores de Demanda <span class="cdot cdot-live"></span></button>
+  <button class="ctab" onclick="switchClient('ol',this)">OLs <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('saojoao',this)">São João <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('nissei',this)">Nissei <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('clamed',this)">Clamed <span class="cdot cdot-live"></span></button>
@@ -263,13 +269,13 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
   <div class="card full" style="margin-bottom:14px;border-color:rgba(167,139,250,0.2);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#a78bfa;margin-bottom:4px;">GERADORES DE DEMANDA · FY25 vs FY26</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#a78bfa;margin-bottom:4px;">ACOMPANHAMENTO OLs · FY25 vs FY26</div>
         <div class="card-title">Acompanhamento OLs — PR/SC e RS</div>
         <div class="card-sub">Share · Positivação · Categoria · Próprio · por Cliente · Fonte: Estudo ED Giovano</div>
       </div>
       <div class="toggle-group">
-        <button class="tgl active blue" onclick="setOLView('prsc',this)">GD PR/SC</button>
-        <button class="tgl" onclick="setOLView('rs',this)">GD RS</button>
+        <button class="tgl active blue" onclick="setOLView('prsc',this)">OL PR/SC</button>
+        <button class="tgl" onclick="setOLView('rs',this)">OL RS</button>
       </div>
     </div>
 
@@ -863,18 +869,18 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
     <div class="line-wrap"><canvas id="gam-line"></canvas></div>
   </div>
   <!-- GESTÃO DE ESTOQUE DD-GAM -->
-  <div class="card full" style="margin-bottom:14px;border-color:rgba(251,113,113,0.12);">
+  <div class="card full" style="margin-bottom:14px;border-color:rgba(52,211,153,0.15);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · AGUARDANDO DADOS</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#34d399;margin-bottom:4px;">GESTÃO DE ESTOQUE · ATUALIZADO ABR/2026</div>
         <div class="card-title">Estoque por SKU — DD-GAM</div>
-        <div class="card-sub">Estoque atual vs média de vendas · Risco de ruptura por SKU</div>
+        <div class="card-sub">Estoque Mar/2026 · 5 filiais · Pendências por SKU</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <div style="display:flex;gap:6px;font-size:10px;">
-          <span style="background:rgba(251,113,113,0.15);color:#fb7185;border:0.5px solid rgba(251,113,113,0.3);border-radius:4px;padding:2px 8px;font-weight:700;">⚠ ATENÇÃO &lt;30d</span>
-          <span style="background:rgba(251,191,36,0.1);color:#fbbf24;border:0.5px solid rgba(251,191,36,0.25);border-radius:4px;padding:2px 8px;font-weight:700;">⚡ CRÍTICO &lt;15d</span>
-          <span style="background:rgba(52,211,153,0.08);color:#34d399;border:0.5px solid rgba(52,211,153,0.2);border-radius:4px;padding:2px 8px;font-weight:700;">✓ OK &gt;30d</span>
+          <span style="background:rgba(251,113,113,0.15);color:#fb7185;border:0.5px solid rgba(251,113,113,0.3);border-radius:4px;padding:2px 8px;font-weight:700;">⚠ ATENÇÃO</span>
+          <span style="background:rgba(251,191,36,0.1);color:#fbbf24;border:0.5px solid rgba(251,191,36,0.25);border-radius:4px;padding:2px 8px;font-weight:700;">⚡ CRÍTICO</span>
+          <span style="background:rgba(52,211,153,0.08);color:#34d399;border:0.5px solid rgba(52,211,153,0.2);border-radius:4px;padding:2px 8px;font-weight:700;">✓ OK</span>
         </div>
         <div class="toggle-group">
           <button class="tgl active blue" onclick="setGamEstoqueView('barras',this)">Barras</button>
@@ -883,18 +889,12 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MÉDIA/MÊS</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">COBERTURA GERAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div><div style="font-size:22px;font-weight:800;color:#e2e8f0;line-height:1;">74.380</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">25 SKUs · 5 filiais</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs CRÍTICOS</div><div style="font-size:22px;font-weight:800;color:#fb7185;line-height:1;">6</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">Estoque zerado ou mínimo</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">PENDÊNCIAS</div><div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;">28.470</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">Pedidos em aberto</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div><div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;">8</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">Estoque abaixo de 800 un</div></div>
     </div>
-    <div id="gam-estoque-barras">
-      <div style="background:rgba(255,255,255,0.02);border:0.5px dashed rgba(255,255,255,0.08);border-radius:10px;padding:40px;text-align:center;">
-        <div style="font-size:22px;margin-bottom:10px;">📦</div>
-        <div style="font-size:13px;font-weight:600;color:#5a6478;margin-bottom:6px;">Dados de estoque não disponíveis</div>
-        <div style="font-size:11px;color:#3d4451;">Envie o arquivo de estoque para DD-GAM e o card será atualizado.</div>
-      </div>
-    </div>
+    <div id="gam-estoque-barras"><div id="gam-estoque-bars" class="bar-list"></div></div>
     <div id="gam-estoque-linha" style="display:none;">
       <div style="position:relative;width:100%;height:280px;"><canvas id="gam-estoque-chart"></canvas></div>
     </div>
@@ -1815,14 +1815,34 @@ function renderBarsVol(containerId, items){
 }
 
 function renderBars(containerId, items, opts){
-  // items = [{nome, val, color, isVol, subinfo, intoc, uf, extraFields:[{label,val}]}]
-  // opts = {maxVal, isVol}
   var el = document.getElementById(containerId);
   if(!el) return;
-  var maxVal = opts.maxVal || Math.max(...items.map(x=>x.val||0));
+  var maxVal = opts.maxVal || Math.max.apply(null, items.map(function(x){return x.val||0;}));
   var globalIsVol = opts.isVol || false;
+  var isHBar = opts.hbar || false;
   var medals = ['🥇','🥈','🥉'];
   var html = '';
+
+  if(isHBar){
+    items.forEach(function(item, i){
+      var pct = maxVal>0 ? Math.round((item.val/maxVal)*100) : 0;
+      var color = item.color || LOJA_COLORS[i] || '#3b82f6';
+      var isVol = item.isVol !== undefined ? item.isVol : globalIsVol;
+      var dispVal = isVol ? item.val.toLocaleString('pt-BR')+' un' : fmtNum(item.val);
+      html += '<div class="hbar-row">';
+      html += '<span class="hbar-label">'+item.nome+'</span>';
+      html += '<div class="hbar-outer"><div class="hbar-inner" style="width:0%;background:'+color+'44;border-left:4px solid '+color+';color:'+color+';text-shadow:0 0 8px '+color+'88;" data-pct="'+pct+'">'+dispVal+'</div></div>';
+      html += '</div>';
+    });
+    el.innerHTML = html;
+    setTimeout(function(){
+      el.querySelectorAll('.hbar-inner').forEach(function(bar){
+        bar.style.width = bar.getAttribute('data-pct') + '%';
+      });
+    }, 80);
+    return;
+  }
+
   items.forEach(function(item, i){
     var pct = maxVal>0 ? Math.round((item.val/maxVal)*100) : 0;
     var color = item.color || LOJA_COLORS[i] || '#3b82f6';
@@ -2196,7 +2216,7 @@ function renderSJLojas(){
         {label:'SKU top: ',val:(intocSku?'🏆 ':'')+l.sku},
       ]};
   });
-  renderBars('sj-loja-bars',items,{isVol:sjLojaMetric==='vol'});
+  renderBars('sj-loja-bars',items,{isVol:sjLojaMetric==='vol',hbar:true});
 }
 function setSJLojaMetric(m,btn){sjLojaMetric=m;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderSJLojas();}
 function setSJLojaAno(a,btn){sjLojaAno=a;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderSJLojas();}
@@ -2285,7 +2305,7 @@ function renderNSLojas(){
         {label:'Total: ',val:l.tot+' un'},
       ]};
   });
-  renderBarsVol('ns-loja-bars',items);
+  renderBars('ns-loja-bars',items,{isVol:true,hbar:true});
 }
 
 function renderNSRank(){
@@ -2418,7 +2438,7 @@ function renderCLLojas(){
     return{nome:l.nome,val:l.tot,color:LOJA_COLORS[i],
       extraFields:[{label:'Jan: ',val:l.jan},{label:'Fev: ',val:l.fev},{label:'Mar: ',val:l.mar}]};
   });
-  renderBars('cl-loja-bars',items,{isVol:true});
+  renderBars('cl-loja-bars',items,{isVol:true,hbar:true});
 }
 
 function renderCLRank(){
@@ -2565,7 +2585,7 @@ function renderPVLojas(){
   var items=PV_LOJAS.map(function(l,i){
     return{nome:l.nome,val:l.rec,color:LOJA_COLORS[i],extraFields:[{label:'Volume: ',val:fmtVol(l.vol)},{label:'UF: ',val:l.uf||'—'}]};
   });
-  renderBars('pv-loja-bars',items,{});
+  renderBars('pv-loja-bars',items,{hbar:true});
 }
 
 function renderPVRank(){
@@ -2573,6 +2593,92 @@ function renderPVRank(){
   renderRankBars('pv-rank-bars',rows,'rec');
 }
 function setPVRankYear(y,btn){pvRankYear=y;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderPVRank();}
+
+/* ═══════════ DD-GAM ESTOQUE ═══════════ */
+const GAM_ESTOQUE = [
+  {sku:'RAID LE FAMILY 45N AP 32.9ML',          marca:'RAID',     estoque:1,     pend:1560, risco:'critico'},
+  {sku:'RAID ELETRICO LIQ. 45N REFIL 32.9ML',   marca:'RAID',     estoque:6,     pend:1080, risco:'critico'},
+  {sku:'RAID ELETRICO REFIL 2UN 32.9ML',         marca:'RAID',     estoque:91,    pend:1128, risco:'critico'},
+  {sku:'EXPOSIS REFIL 32.9ML',                   marca:'EXPOSIS',  estoque:150,   pend:168,  risco:'critico'},
+  {sku:'EXPOSIS GATILHO 150ML',                  marca:'EXPOSIS',  estoque:155,   pend:210,  risco:'critico'},
+  {sku:'PATO BLOCK SPRAY LAVANDA 60ML',          marca:'PATO',     estoque:190,   pend:0,    risco:'critico'},
+  {sku:'PATO BLOCK SPRAY ALGODAO 60ML',          marca:'PATO',     estoque:234,   pend:0,    risco:'atencao'},
+  {sku:'EXPOSIS AP CASA+REFIL 32.9ML',           marca:'EXPOSIS',  estoque:307,   pend:468,  risco:'atencao'},
+  {sku:'PATO BLOCK SPRAY EUCALIPTO 60ML',        marca:'PATO',     estoque:312,   pend:0,    risco:'atencao'},
+  {sku:'EXPOSIS INFANTIL SPRAY 100ML',           marca:'EXPOSIS',  estoque:379,   pend:1932, risco:'atencao'},
+  {sku:'EXPOSIS EXT. AEROSSOL 100ML',            marca:'EXPOSIS',  estoque:621,   pend:60,   risco:'atencao'},
+  {sku:'OFF LONGA DURACAO LOCAO 100ML',          marca:'OFF',      estoque:654,   pend:1908, risco:'atencao'},
+  {sku:'LYSOFORM AERO ORIGINAL 250ML',           marca:'LYSOFORM', estoque:666,   pend:0,    risco:'atencao'},
+  {sku:'EXPOSIS INFANTIL GEL 100ML',             marca:'EXPOSIS',  estoque:786,   pend:1380, risco:'atencao'},
+  {sku:'EXPOSIS GEL 100ML',                      marca:'EXPOSIS',  estoque:807,   pend:240,  risco:'ok'},
+  {sku:'OFF FAMILY TOQUE LEVE SPRAY 100ML',      marca:'OFF',      estoque:861,   pend:60,   risco:'ok'},
+  {sku:'EXPOSIS EXTREME SPRAY 100ML',            marca:'EXPOSIS',  estoque:899,   pend:960,  risco:'ok'},
+  {sku:'EXPOSIS SPRAY ULTRA 100ML',              marca:'EXPOSIS',  estoque:935,   pend:0,    risco:'ok'},
+  {sku:'EXPOSIS BEBE GEL 117ML',                 marca:'EXPOSIS',  estoque:1027,  pend:600,  risco:'ok'},
+  {sku:'OFF FAMILY GEL TOQUE LEVE 100ML',        marca:'OFF',      estoque:1351,  pend:0,    risco:'ok'},
+  {sku:'OFF BABY LOCAO 117ML',                   marca:'OFF',      estoque:4585,  pend:6480, risco:'ok'},
+  {sku:'OFF FAMILY AEROSOL 170ML',               marca:'OFF',      estoque:8951,  pend:300,  risco:'ok'},
+  {sku:'OFF FAMILY OFERTA ESP. LOCAO 200ML',     marca:'OFF',      estoque:14289, pend:2268, risco:'ok'},
+  {sku:'OFF KIDS LOCAO 200ML',                   marca:'OFF',      estoque:18017, pend:4488, risco:'ok'},
+  {sku:'OFF FAMILY SPRAY 170ML',                 marca:'OFF',      estoque:18106, pend:3180, risco:'ok'},
+];
+
+var gamEstoqueView  = 'barras';
+var gamEstoqueChart = null;
+
+function renderGAMEstoqueBarras(){
+  var el = document.getElementById('gam-estoque-bars');
+  if(!el) return;
+  var maxEst = Math.max.apply(null, GAM_ESTOQUE.map(function(d){return d.estoque;}));
+  var h = '';
+  GAM_ESTOQUE.forEach(function(d,i){
+    var cor = d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';
+    var bg  = d.risco==='critico'?'border-left:2px solid #fb7185;background:rgba(251,113,113,0.04);':
+              d.risco==='atencao'?'border-left:2px solid #fbbf24;background:rgba(251,191,36,0.04);':'';
+    var pct = d.estoque===0?0:Math.max(1,Math.round(d.estoque/maxEst*100));
+    var estLabel = d.estoque===0?'ZERADO':d.estoque.toLocaleString('pt-BR')+' un';
+    var pendBadge = d.pend>0?('<span style="font-size:9px;font-weight:700;background:rgba(251,191,36,0.15);color:#fbbf24;border-radius:3px;padding:1px 5px;margin-left:6px;">⏳ '+d.pend.toLocaleString('pt-BR')+' pend.</span>'):'';
+    var alertaBadge = d.risco!=='ok'?('<span style="font-size:9px;font-weight:700;background:'+cor+'22;color:'+cor+';border-radius:3px;padding:1px 5px;margin-left:4px;">'+(d.risco==='critico'?'⚡ CRÍTICO':'⚠ ATENÇÃO')+'</span>'):'';
+    h += '<div class="bar-item" data-togglesel="1" style="'+bg+'">';
+    h += '<div class="bar-item-header">';
+    h += '<span class="bar-rank" style="background:'+cor+'22;color:'+cor+';">'+(i+1)+'</span>';
+    h += '<span class="bar-name">'+d.sku+alertaBadge+pendBadge+'</span>';
+    h += '<span style="font-size:10px;color:#5a6478;margin-right:6px;">'+estLabel+'</span>';
+    h += '<span class="bar-val" style="color:'+cor+'">'+d.marca+'</span>';
+    h += '</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+cor+';" data-pct="'+pct+'"></div></div>';
+    h += '<div class="bar-expand">';
+    h += '<div class="expand-item">Estoque Total: <span class="expand-val" style="color:'+cor+'">'+d.estoque.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Pendências: <span class="expand-val" style="color:'+(d.pend>0?'#fbbf24':'#5a6478')+'">'+d.pend.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Marca: <span class="expand-val" style="color:#8b95a8">'+d.marca+'</span></div>';
+    h += '</div></div>';
+  });
+  el.innerHTML = h;
+  el.querySelectorAll('[data-togglesel]').forEach(function(r){r.addEventListener('click',function(){this.classList.toggle('selected');});});
+  setTimeout(function(){el.querySelectorAll('.bar-fill').forEach(function(bar){bar.style.width=bar.getAttribute('data-pct')+'%';});},80);
+}
+
+function renderGAMEstoqueLinha(){
+  var ctx = document.getElementById('gam-estoque-chart');
+  if(!ctx) return;
+  if(gamEstoqueChart) gamEstoqueChart.destroy();
+  var skus = GAM_ESTOQUE.filter(function(d){return d.estoque>0;}).slice(0,14);
+  var labels = skus.map(function(d){return d.sku.length>22?d.sku.substring(0,22)+'…':d.sku;});
+  var cores  = skus.map(function(d){return d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';});
+  gamEstoqueChart = new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[
+    {label:'Estoque Total (un)',data:skus.map(function(d){return d.estoque;}),backgroundColor:cores.map(function(c){return c+'88';}),borderColor:cores,borderWidth:2,borderRadius:5,yAxisID:'y'},
+    {label:'Pendências (un)',data:skus.map(function(d){return d.pend>0?d.pend:null;}),type:'line',borderColor:'#fbbf24',backgroundColor:'transparent',pointBackgroundColor:'#fbbf24',pointRadius:7,pointBorderWidth:2,borderWidth:2,tension:0.3,yAxisID:'y'}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#8b95a8',font:{size:10},boxWidth:10}},
+      tooltip:{backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
+        callbacks:{label:function(c){if(c.datasetIndex===0)return ' Estoque: '+c.raw.toLocaleString('pt-BR')+' un';return ' Pendência: '+c.raw.toLocaleString('pt-BR')+' un';}}}
+    },
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#8b95a8',font:{size:9},maxRotation:35}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#5a6478',font:{size:9},callback:function(v){return v>=1000?(v/1000).toFixed(0)+'K':v;}},title:{display:true,text:'Unidades',color:'#5a6478',font:{size:9}}}
+    }
+  }});
+}
 
 /* ═══════════ DD-GAM ═══════════ */
 var gamBarMode='rec', gamDonutYear='2024', gamRankYear='2024', gamLojaMetric='rec', gamCidMetric='rec';
@@ -2586,6 +2692,7 @@ function initGAM(){
     {label:'Receita 2026',val:'R$ 3,54M',sub:'Jan–Mar parcial',color:'#34d399'},
   ]);
   renderGAMAnoBars(); renderGAMDonut(); renderGAMLine(); renderGAMClientes(); renderGAMCidades(); renderGAMRank(); renderGAMMeta(); renderGAMPositiv();
+  renderGAMEstoqueBarras();
   renderDNBars('gam-dn-bars', DN_GAM, 'off');
   renderPositivMensalTable('gam-positiv-mes-wrap', GAM_POSITIV_MES['2024'], GAM_POSITIV_MES['2025'], GAM_POSITIV_MES['2026']);
 
@@ -2627,7 +2734,7 @@ function renderGAMClientes(){
     return{nome:l.nome,val:val,color:LOJA_COLORS[i],share:share,
       extraFields:[{label:'Receita: ',val:fmtFull(l.rec)},{label:'Volume: ',val:fmtVol(l.vol)},{label:'Ticket: ',val:'R$ '+(l.rec/l.vol).toFixed(2)}]};
   });
-  renderBars('gam-clientes-bars',items,{isVol:gamLojaMetric==='vol'});
+  renderBars('gam-clientes-bars',items,{isVol:gamLojaMetric==='vol',hbar:true});
 }
 function setGAMLojaMetric(m,btn){gamLojaMetric=m;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderGAMClientes();}
 
@@ -2641,7 +2748,7 @@ function renderGAMCidades(){
     return{nome:c.nome.split('/')[0],val:val,uf:uf,color:UF_COLORS[uf]||LOJA_COLORS[i],share:share,
       extraFields:[{label:'Receita: ',val:fmtFull(c.rec)},{label:'Volume: ',val:fmtVol(c.vol)},{label:'Share: ',val:share+'%'}]};
   });
-  renderBars('gam-cidades-bars',items,{isVol:gamCidMetric==='vol'});
+  renderBars('gam-cidades-bars',items,{isVol:gamCidMetric==='vol',hbar:true});
 }
 function setGAMCidMetric(m,btn){gamCidMetric=m;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue','purple');});btn.classList.add('active','purple');renderGAMCidades();}
 
@@ -2710,7 +2817,7 @@ function renderGCHPDVs(){
     return{nome:r[0].split('|')[0].trim(), val:val, color:LOJA_COLORS[i],
       extraFields:[{label:'Receita: ',val:fmtFull(r[1])},{label:'Volume: ',val:fmtVol(r[2]||0)}]};
   });
-  renderBars('gch-pdv-bars',items,{isVol:isVol});
+  renderBars('gch-pdv-bars',items,{isVol:isVol,hbar:true});
 }
 function setGCHRankYear(y,btn){gchRankYear=y;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderGCHPDVs();}
 function setGCHLojaMetric(m,btn){gchLojaMetric=m;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});btn.classList.add('active','blue');renderGCHPDVs();}
@@ -2725,7 +2832,7 @@ function renderGCHCidades(){
     return{nome:c.nome,val:val,uf:c.uf,color:UF_COLORS[c.uf]||LOJA_COLORS[i],share:share,
       extraFields:[{label:'Receita: ',val:fmtFull(c.rec)},{label:'Volume: ',val:fmtVol(c.vol||0)}]};
   });
-  renderBars('gch-cid-bars',items,{isVol:isVol});
+  renderBars('gch-cid-bars',items,{isVol:isVol,hbar:true});
 }
 function setGCHCidMetric(m,btn){gchCidMetric=m;btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue','purple');});btn.classList.add('active','purple');renderGCHCidades();}
 
@@ -4003,8 +4110,10 @@ function setPvEstoqueView(view, btn){
 function setGamEstoqueView(view, btn){
   btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});
   btn.classList.add('active','blue');
+  gamEstoqueView = view;
   document.getElementById('gam-estoque-barras').style.display = view==='barras'?'block':'none';
   document.getElementById('gam-estoque-linha').style.display  = view==='linha'?'block':'none';
+  if(view==='linha') renderGAMEstoqueLinha(); else renderGAMEstoqueBarras();
 }
 
 function setGchEstoqueView(view, btn){
@@ -4224,6 +4333,7 @@ function switchClient(id,btn){
     initialized[id]=true;
     setTimeout(function(){
       if(id==='saojoao') initSJ();
+      else if(id==='ol') initOL();
       else if(id==='nissei') initNissei();
       else if(id==='clamed') initClamed();
       else if(id==='panvel') initPanvel();
