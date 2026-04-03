@@ -160,13 +160,13 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
       <div class="header-sub">Repelentes &amp; Inseticidas · Unidades &amp; Receita · 2024–2026</div>
     </div>
   </div>
-  <div class="header-badge">● 8 clientes · R$ 16,32M receita · ~2,6M unidades</div>
+  <div class="header-badge">● 7 clientes · R$ 16,32M receita · ~2,6M unidades</div>
 </div>
 
 <!-- TABS -->
 <div class="ctabs">
   <button class="ctab active" onclick="switchClient('nielsen',this)">Nielsen <span class="cdot cdot-live"></span></button>
-  <button class="ctab" onclick="switchClient('ol',this)">Acomp. OLs <span class="cdot cdot-live"></span></button>
+  <button class="ctab" onclick="switchClient('ol',this)">Geradores de Demanda <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('saojoao',this)">São João <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('nissei',this)">Nissei <span class="cdot cdot-live"></span></button>
   <button class="ctab" onclick="switchClient('clamed',this)">Clamed <span class="cdot cdot-live"></span></button>
@@ -227,7 +227,16 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
         <div class="card-sub">Acumulado do ano fiscal · Comparativo por market</div>
       </div>
     </div>
-    <div style="position:relative;width:100%;height:260px;"><canvas id="nielsen-fytd-bar"></canvas></div>
+    <!-- Legenda manual -->
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#8b95a8;"><span style="width:24px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);border:1.5px dashed #8b95a8;display:inline-block;"></span>FYTD25</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#fbbf24;"><span style="width:24px;height:10px;border-radius:3px;background:#fbbf24cc;display:inline-block;"></span>OFF! FYTD26</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#3b82f6;"><span style="width:24px;height:10px;border-radius:3px;background:#3b82f6cc;display:inline-block;"></span>EXPOSIS</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#fb7185;"><span style="width:24px;height:10px;border-radius:3px;background:#fb7185cc;display:inline-block;"></span>XO INSETO</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#34d399;"><span style="width:24px;height:10px;border-radius:3px;background:#34d399cc;display:inline-block;"></span>SUPER REPELEX</span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:#a78bfa;"><span style="width:24px;height:10px;border-radius:3px;background:#a78bfacc;display:inline-block;"></span>SBP</span>
+    </div>
+    <div style="position:relative;width:100%;height:320px;"><canvas id="nielsen-fytd-bar"></canvas></div>
   </div>
 
   <!-- CARD 3: SCJ vs concorrentes -->
@@ -243,7 +252,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
         <button class="tgl" onclick="setNielsenCompModo('fytd25',this)">FYTD25</button>
       </div>
     </div>
-    <div style="position:relative;width:100%;height:460px;"><canvas id="nielsen-comp-bar"></canvas></div>
+    <div id="nielsen-comp-custom" style="padding:4px 0;"></div>
   </div>
 
   <div class="dash-footer"><p>Fonte: NielsenIQ · Personal Repellent · $ Share · Jul/2025–Fev/2026</p><p>Abril 2026</p></div>
@@ -254,13 +263,13 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
   <div class="card full" style="margin-bottom:14px;border-color:rgba(167,139,250,0.2);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#a78bfa;margin-bottom:4px;">OPERADORES LOGÍSTICOS · FY25 vs FY26</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#a78bfa;margin-bottom:4px;">GERADORES DE DEMANDA · FY25 vs FY26</div>
         <div class="card-title">Acompanhamento OLs — PR/SC e RS</div>
         <div class="card-sub">Share · Positivação · Categoria · Próprio · por Cliente · Fonte: Estudo ED Giovano</div>
       </div>
       <div class="toggle-group">
-        <button class="tgl active blue" onclick="setOLView('prsc',this)">OL PR/SC</button>
-        <button class="tgl" onclick="setOLView('rs',this)">OL RS</button>
+        <button class="tgl active blue" onclick="setOLView('prsc',this)">GD PR/SC</button>
+        <button class="tgl" onclick="setOLView('rs',this)">GD RS</button>
       </div>
     </div>
 
@@ -538,7 +547,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
   <div class="card full" style="margin-bottom:14px;border-color:rgba(251,113,113,0.12);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · AGUARDANDO DADOS</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · MAR/2026</div>
         <div class="card-title">Estoque por SKU — Nissei</div>
         <div class="card-sub">Estoque atual vs média de vendas · Risco de ruptura por SKU</div>
       </div>
@@ -554,20 +563,38 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
         </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MÉDIA/MÊS</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">COBERTURA GERAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-    </div>
-    <div id="ns-estoque-barras">
-      <div style="background:rgba(255,255,255,0.02);border:0.5px dashed rgba(255,255,255,0.08);border-radius:10px;padding:40px;text-align:center;">
-        <div style="font-size:22px;margin-bottom:10px;">📦</div>
-        <div style="font-size:13px;font-weight:600;color:#5a6478;margin-bottom:6px;">Dados de estoque não disponíveis</div>
-        <div style="font-size:11px;color:#3d4451;">Envie o arquivo de estoque para Nissei e o card será atualizado.</div>
+    <div s    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
+      <div style="background:#0d1422;padding:12px 16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div>
+        <div style="font-size:22px;font-weight:800;color:#c8ccda;line-height:1;" id="ns-kpi-est">35.969</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Unidades Mar/2026</div>
+      </div>
+      <div style="background:#0d1422;padding:12px 16px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#fbbf24;"></div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div>
+        <div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;" id="ns-kpi-at">2</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Cobertura &lt;30 dias</div>
+      </div>
+      <div style="background:#0d1422;padding:12px 16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MÉDIA/MÊS</div>
+        <div style="font-size:22px;font-weight:800;color:#34d399;line-height:1;" id="ns-kpi-vnd">11.787</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Média Jan–Mar/2026</div>
+      </div>
+      <div style="background:#0d1422;padding:12px 16px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#fbbf24;"></div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">COBERTURA GERAL</div>
+        <div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;" id="ns-kpi-cob">92 dias</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Estoque ÷ venda diária</div>
       </div>
     </div>
+    <!-- Tabs HB / Edmar -->
+    <div style="display:flex;gap:8px;margin-bottom:14px;">
+      <button class="tgl active blue" id="ns-est-tab-hb" onclick="setNsEstoqueTab('hb',this)">HB — Andre</button>
+      <button class="tgl" id="ns-est-tab-ed" onclick="setNsEstoqueTab('ed',this)">Elétricos/RAID — Edmar</button>
+    </div>
+    <div id="ns-estoque-barras"><div id="ns-estoque-bars" class="bar-list"></div></div>
     <div id="ns-estoque-linha" style="display:none;">
+      <div style="font-size:10px;color:#5a6478;margin-bottom:10px;">Linha = estoque atual · Ponto colorido = risco de cobertura · Baseado em venda média Jan–Mar/2026</div>
       <div style="position:relative;width:100%;height:280px;"><canvas id="ns-estoque-chart"></canvas></div>
     </div>
   </div>
@@ -616,10 +643,22 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
       <div id="cl-mes-bars" class="bar-list"></div>
     </div>
   <!-- GESTÃO DE ESTOQUE CLAMED -->
+    <div class="card">
+      <div class="card-header">
+        <div><div class="card-title">Top Produtos</div><div class="card-sub">Por volume</div></div>
+        <div class="toggle-group">
+          <button class="tgl active blue" onclick="setCLRankKey('2025',this)">2025</button>
+          <button class="tgl" onclick="setCLRankKey('2026',this)">2026</button>
+        </div>
+      </div>
+      <div class="donut-wrap"><div class="donut-svg-wrap"><svg id="cl-donut" width="200" height="200" viewBox="0 0 200 200" style="display:block;"></svg><div class="donut-center"><div class="donut-center-val" id="cl-donut-cv"></div><div class="donut-center-sub" id="cl-donut-cs"></div></div><div class="donut-tip" id="cl-donut-tip"><div class="donut-tip-name" id="cl-donut-tn"></div><div class="donut-tip-row">Vol: <span class="donut-tip-val" id="cl-donut-tv"></span></div><div class="donut-tip-row">Rec: <span class="donut-tip-val" id="cl-donut-tr"></span></div><div class="donut-tip-row">Share: <span class="donut-tip-val" id="cl-donut-ts"></span></div></div></div><div class="donut-legend-new" id="cl-donut-legend"></div></div>
+    </div>
+  </div>
+
   <div class="card full" style="margin-bottom:14px;border-color:rgba(251,113,113,0.12);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · AGUARDANDO DADOS</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · MAR/2026</div>
         <div class="card-title">Estoque por SKU — Clamed</div>
         <div class="card-sub">Estoque atual vs média de vendas · Risco de ruptura por SKU</div>
       </div>
@@ -636,54 +675,36 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
       </div>
     </div>
     <!-- KPIs placeholder -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:#0d1422;padding:14px 16px;">
+    <div s    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
+      <div style="background:#0d1422;padding:12px 16px;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div>
-        <div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div>
-        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div>
+        <div style="font-size:22px;font-weight:800;color:#c8ccda;line-height:1;">43.632</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Unidades · Mar/2026 · 652 filiais</div>
       </div>
-      <div style="background:#0d1422;padding:14px 16px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#3d4451;"></div>
+      <div style="background:#0d1422;padding:12px 16px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#34d399;"></div>
         <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div>
-        <div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div>
-        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div>
+        <div style="font-size:22px;font-weight:800;color:#34d399;line-height:1;">0</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Todos acima de 30 dias ✓</div>
       </div>
-      <div style="background:#0d1422;padding:14px 16px;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MÉDIA/MÊS</div>
-        <div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div>
-        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div>
+      <div style="background:#0d1422;padding:12px 16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MAR/26</div>
+        <div style="font-size:22px;font-weight:800;color:#34d399;line-height:1;">11.233</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Unidades reais</div>
       </div>
-      <div style="background:#0d1422;padding:14px 16px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#3d4451;"></div>
+      <div style="background:#0d1422;padding:12px 16px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#fbbf24;"></div>
         <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">COBERTURA GERAL</div>
-        <div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div>
-        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div>
+        <div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;">117 dias</div>
+        <div style="font-size:10px;color:#3d4451;margin-top:4px;">Estoque ÷ venda diária</div>
       </div>
     </div>
-    <!-- Placeholder -->
-    <div id="cl-estoque-barras" style="display:block;">
-      <div style="background:rgba(255,255,255,0.02);border:0.5px dashed rgba(255,255,255,0.08);border-radius:10px;padding:40px;text-align:center;">
-        <div style="font-size:22px;margin-bottom:10px;">📦</div>
-        <div style="font-size:13px;font-weight:600;color:#5a6478;margin-bottom:6px;">Dados de estoque não disponíveis</div>
-        <div style="font-size:11px;color:#3d4451;">Envie o arquivo de estoque para Clamed e o card será atualizado automaticamente.</div>
-      </div>
-    </div>
+    <div id="cl-estoque-barras"><div id="cl-estoque-bars" class="bar-list"></div></div>
     <div id="cl-estoque-linha" style="display:none;">
       <div style="position:relative;width:100%;height:280px;"><canvas id="cl-estoque-chart"></canvas></div>
     </div>
   </div>
 
-    <div class="card">
-      <div class="card-header">
-        <div><div class="card-title">Top Produtos</div><div class="card-sub">Por volume</div></div>
-        <div class="toggle-group">
-          <button class="tgl active blue" onclick="setCLRankKey('2025',this)">2025</button>
-          <button class="tgl" onclick="setCLRankKey('2026',this)">2026</button>
-        </div>
-      </div>
-      <div class="donut-wrap"><div class="donut-svg-wrap"><svg id="cl-donut" width="200" height="200" viewBox="0 0 200 200" style="display:block;"></svg><div class="donut-center"><div class="donut-center-val" id="cl-donut-cv"></div><div class="donut-center-sub" id="cl-donut-cs"></div></div><div class="donut-tip" id="cl-donut-tip"><div class="donut-tip-name" id="cl-donut-tn"></div><div class="donut-tip-row">Vol: <span class="donut-tip-val" id="cl-donut-tv"></span></div><div class="donut-tip-row">Rec: <span class="donut-tip-val" id="cl-donut-tr"></span></div><div class="donut-tip-row">Share: <span class="donut-tip-val" id="cl-donut-ts"></span></div></div></div><div class="donut-legend-new" id="cl-donut-legend"></div></div>
-    </div>
-  </div>
   <div class="cards-row">
     <div class="card">
       <div class="card-header">
@@ -745,18 +766,18 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
     <div class="line-wrap"><canvas id="pv-line"></canvas></div>
   </div>
   <!-- GESTÃO DE ESTOQUE PANVEL -->
-  <div class="card full" style="margin-bottom:14px;border-color:rgba(251,113,113,0.12);">
+  <div class="card full" style="margin-bottom:14px;border-color:rgba(52,211,153,0.15);">
     <div class="card-header">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fb7185;margin-bottom:4px;">GESTÃO DE ESTOQUE · AGUARDANDO DADOS</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#34d399;margin-bottom:4px;">GESTÃO DE ESTOQUE · ATUALIZADO ABR/2026</div>
         <div class="card-title">Estoque por SKU — Panvel</div>
-        <div class="card-sub">Estoque atual vs média de vendas · Risco de ruptura por SKU</div>
+        <div class="card-sub">Estoque atual · CD RS + CD PR + Lojas · Pendências por SKU</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <div style="display:flex;gap:6px;font-size:10px;">
-          <span style="background:rgba(251,113,113,0.15);color:#fb7185;border:0.5px solid rgba(251,113,113,0.3);border-radius:4px;padding:2px 8px;font-weight:700;">⚠ ATENÇÃO &lt;30d</span>
-          <span style="background:rgba(251,191,36,0.1);color:#fbbf24;border:0.5px solid rgba(251,191,36,0.25);border-radius:4px;padding:2px 8px;font-weight:700;">⚡ CRÍTICO &lt;15d</span>
-          <span style="background:rgba(52,211,153,0.08);color:#34d399;border:0.5px solid rgba(52,211,153,0.2);border-radius:4px;padding:2px 8px;font-weight:700;">✓ OK &gt;30d</span>
+          <span style="background:rgba(251,113,113,0.15);color:#fb7185;border:0.5px solid rgba(251,113,113,0.3);border-radius:4px;padding:2px 8px;font-weight:700;">⚠ ATENÇÃO</span>
+          <span style="background:rgba(251,191,36,0.1);color:#fbbf24;border:0.5px solid rgba(251,191,36,0.25);border-radius:4px;padding:2px 8px;font-weight:700;">⚡ CRÍTICO</span>
+          <span style="background:rgba(52,211,153,0.08);color:#34d399;border:0.5px solid rgba(52,211,153,0.2);border-radius:4px;padding:2px 8px;font-weight:700;">✓ OK</span>
         </div>
         <div class="toggle-group">
           <button class="tgl active blue" onclick="setPvEstoqueView('barras',this)">Barras</button>
@@ -765,18 +786,12 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:10px;overflow:hidden;margin-bottom:18px;">
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs EM ATENÇÃO</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">VENDA MÉDIA/MÊS</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
-      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">COBERTURA GERAL</div><div style="font-size:22px;font-weight:800;color:#3d4451;line-height:1;">—</div><div style="font-size:10px;color:#3d4451;margin-top:4px;">Aguardando arquivo</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">ESTOQUE TOTAL</div><div style="font-size:22px;font-weight:800;color:#e2e8f0;line-height:1;">76.256</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">28 SKUs ativos</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">SKUs CRÍTICOS</div><div style="font-size:22px;font-weight:800;color:#fb7185;line-height:1;">3</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">Estoque zerado ou mínimo</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">PENDÊNCIAS</div><div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;">1.200</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">5 SKUs com pedidos abertos</div></div>
+      <div style="background:#0d1422;padding:14px 16px;"><div style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#5a6478;margin-bottom:6px;">RAID EM ALERTA</div><div style="font-size:22px;font-weight:800;color:#fbbf24;line-height:1;">1.188</div><div style="font-size:10px;color:#5a6478;margin-top:4px;">Pendências concentradas em RAID</div></div>
     </div>
-    <div id="pv-estoque-barras">
-      <div style="background:rgba(255,255,255,0.02);border:0.5px dashed rgba(255,255,255,0.08);border-radius:10px;padding:40px;text-align:center;">
-        <div style="font-size:22px;margin-bottom:10px;">📦</div>
-        <div style="font-size:13px;font-weight:600;color:#5a6478;margin-bottom:6px;">Dados de estoque não disponíveis</div>
-        <div style="font-size:11px;color:#3d4451;">Envie o arquivo de estoque para Panvel e o card será atualizado.</div>
-      </div>
-    </div>
+    <div id="pv-estoque-barras"><div id="pv-estoque-bars" class="bar-list"></div></div>
     <div id="pv-estoque-linha" style="display:none;">
       <div style="position:relative;width:100%;height:280px;"><canvas id="pv-estoque-chart"></canvas></div>
     </div>
@@ -1516,12 +1531,12 @@ const PV_LOJAS = [
 
 const CL_LABELS = ['Set/25','Out/25','Nov/25','Dez/25','Jan/26','Fev/26','Mar/26'];
 
-const CL_VOL_MES = [3343, 4902, 7555, 18553, 13965, 16070, 5183];
+const CL_VOL_MES = [3343, 4902, 7555, 18553, 13965, 16070, 11233]; // Mar/26 real
 
 const CL_RANK = {
   total:[['OFF 200ML Locao',21360,'#3b82f6'],['OFF 170ML Spray',18253,'#60a5fa'],['OFF Kids 200ML',11776,'#818cf8'],['OFF 165ML Aero',4784,'#a78bfa'],['OFF Baby 117ML',3850,'#c084fc'],['EXPOSIS Gel Infantil',2096,'#34d399'],['EXPOSIS Spray Extreme',1584,'#2dd4bf'],['EXPOSIS Spray Infantil',1276,'#fb923c'],['EXPOSIS Elet AP+Refil',835,'#f472b6'],['OFF Toque Leve 100G',820,'#facc15']],
   '2025':[['OFF 170ML Spray',10420,'#3b82f6'],['OFF 200ML Locao',9064,'#60a5fa'],['OFF Kids 200ML',5464,'#818cf8'],['OFF 165ML Aero',2089,'#a78bfa'],['OFF Baby 117ML',2050,'#c084fc'],['EXPOSIS Gel Infantil',1320,'#34d399'],['EXPOSIS Spray Extreme',876,'#2dd4bf'],['EXPOSIS Spray Infantil',667,'#fb923c'],['EXPOSIS Gel Bebe 117ML',399,'#f472b6'],['OFF Toque Leve 100G',376,'#facc15']],
-  '2026':[['OFF 200ML Locao',12296,'#3b82f6'],['OFF 170ML Spray',7833,'#60a5fa'],['OFF Kids 200ML',6312,'#818cf8'],['OFF 165ML Aero',2695,'#a78bfa'],['OFF Baby 117ML',1800,'#c084fc'],['EXPOSIS Gel Infantil',776,'#34d399'],['EXPOSIS Elet AP+Refil',512,'#2dd4bf'],['EXPOSIS Spray Infantil',609,'#fb923c'],['EXPOSIS Spray Extreme',708,'#f472b6'],['OFF Toque Leve 100G',427,'#facc15']]
+  '2026':[['OFF 200ML Locao',15575,'#3b82f6'],['OFF 170ML Spray',10237,'#60a5fa'],['OFF Kids 200ML',8547,'#818cf8'],['OFF 165ML Aero',3625,'#a78bfa'],['OFF Baby 117ML',2599,'#c084fc'],['EXPOSIS Gel Infantil',1117,'#34d399'],['EXPOSIS Spray Extreme',906,'#2dd4bf'],['EXPOSIS Spray Infantil',822,'#fb923c'],['EXPOSIS Elet AP+Refil',665,'#f472b6'],['OFF Toque Leve 100G',582,'#facc15']]
 };
 
 const CL_LOJAS = [
@@ -2226,7 +2241,8 @@ function initNissei(){
     {label:'Receita 2025',val:fmtNum(k.r25),sub:'Total anual',color:'#a78bfa'},
     {label:'Ticket 2025',val:'R$ '+(k.r25/k.u25).toFixed(2),sub:'Receita ÷ volume',color:'#fbbf24'},
   ]);
-  renderNSAnoBars(); renderNSDonut(); renderNSLine(); renderNSLojas(); renderNSRank(); renderNSMeta();
+  renderNSAnoBars(); renderNSDonut(); renderNSLine(); renderNSLojas(); renderNSRank();
+  renderNsEstoqueBarras(); updateNsEstoqueKPIs(); renderNSMeta();
 }
 
 function renderNSAnoBars(){
@@ -2288,6 +2304,86 @@ function switchNisseiComp(comp,btn){
   initNissei();
 }
 
+/* ═══════════ ESTOQUE CLAMED ═══════════ */
+const CL_ESTOQUE = [
+  {sku:'OFF Spray Family 170ML',       estoque:3811, venda:2404, cob:48,  risco:'ok'},
+  {sku:'OFF Locao Family 200ML',       estoque:5677, venda:3279, cob:52,  risco:'ok'},
+  {sku:'OFF Kids 200ML',               estoque:6131, venda:2235, cob:82,  risco:'ok'},
+  {sku:'OFF Active 100ML',             estoque:552,  venda:144,  cob:115, risco:'ok'},
+  {sku:'OFF Aero 165ML',               estoque:3631, venda:930,  cob:117, risco:'ok'},
+  {sku:'EXPOSIS Elet Refil 32,9ML',    estoque:421,  venda:70,   cob:180, risco:'ok'},
+  {sku:'EXPOSIS Elet AP+Refil',        estoque:1010, venda:153,  cob:198, risco:'ok'},
+  {sku:'OFF Baby 117ML',               estoque:5435, venda:799,  cob:204, risco:'ok'},
+  {sku:'OFF Toque Leve 100G',          estoque:1208, venda:155,  cob:234, risco:'ok'},
+  {sku:'EXPOSIS Spray Extreme 100ML',  estoque:2540, venda:198,  cob:385, risco:'ok'},
+  {sku:'EXPOSIS Gel 100ML',            estoque:1846, venda:130,  cob:426, risco:'ok'},
+  {sku:'EXPOSIS Gel Infantil 100ML',   estoque:4912, venda:341,  cob:432, risco:'ok'},
+  {sku:'EXPOSIS Aero Extreme 100ML',   estoque:985,  venda:68,   cob:435, risco:'ok'},
+  {sku:'EXPOSIS Gel Bebe 117ML',       estoque:1742, venda:114,  cob:458, risco:'ok'},
+  {sku:'EXPOSIS Spray Infantil 100ML', estoque:3679, venda:213,  cob:518, risco:'ok'},
+];
+
+var clEstoqueView  = 'barras';
+var clEstoqueChart = null;
+
+function renderClEstoqueBarras(){
+  var el = document.getElementById('cl-estoque-bars');
+  if(!el) return;
+  var maxEst = Math.max.apply(null, CL_ESTOQUE.map(function(d){return d.estoque;}));
+  var h = '';
+  CL_ESTOQUE.forEach(function(d,i){
+    var cor = d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';
+    var bg  = d.risco==='critico'?'border-left:2px solid #fb7185;background:rgba(251,113,113,0.04);':
+              d.risco==='atencao'?'border-left:2px solid #fbbf24;background:rgba(251,191,36,0.04);':'';
+    var pct = Math.min(100,Math.round(d.estoque/maxEst*100));
+    var cobLabel = d.cob>=999?'sem giro':d.cob+'d';
+    var alerta = d.risco!=='ok'?('<span style="font-size:9px;font-weight:700;background:'+cor+'22;color:'+cor+';border-radius:3px;padding:1px 5px;margin-left:6px;">'+cobLabel+'</span>'):'';
+    h += '<div class="bar-item" data-togglesel="1">';
+    h += '<div class="bar-item-header">';
+    h += '<span class="bar-rank" style="background:'+cor+'22;color:'+cor+';">'+(i+1)+'</span>';
+    h += '<span class="bar-name">'+d.sku+alerta+'</span>';
+    h += '<span style="font-size:10px;color:#5a6478;margin-right:6px;">'+d.estoque.toLocaleString('pt-BR')+' un</span>';
+    h += '<span class="bar-val" style="color:'+cor+'">'+cobLabel+' cob.</span>';
+    h += '</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+cor+';" data-pct="'+pct+'"></div></div>';
+    h += '<div class="bar-expand">';
+    h += '<div class="expand-item">Estoque: <span class="expand-val" style="color:'+cor+'">'+d.estoque.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Venda Mar/26: <span class="expand-val" style="color:#8b95a8">'+d.venda.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Cobertura: <span class="expand-val" style="color:'+cor+'">'+cobLabel+'</span></div>';
+    h += '</div></div>';
+  });
+  el.innerHTML = h;
+  el.querySelectorAll('[data-togglesel]').forEach(function(r){r.addEventListener('click',function(){this.classList.toggle('selected');});});
+  setTimeout(function(){el.querySelectorAll('.bar-fill').forEach(function(bar){bar.style.width=bar.getAttribute('data-pct')+'%';});},80);
+}
+
+function renderClEstoqueLinha(){
+  var ctx = document.getElementById('cl-estoque-chart');
+  if(!ctx) return;
+  if(clEstoqueChart) clEstoqueChart.destroy();
+  var skus = CL_ESTOQUE.filter(function(d){return d.venda>0;}).slice(0,12);
+  var labels = skus.map(function(d){return d.sku.length>20?d.sku.substring(0,20)+'…':d.sku;});
+  var cores  = skus.map(function(d){return d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';});
+  clEstoqueChart = new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[
+    {label:'Estoque Atual (un)',data:skus.map(function(d){return d.estoque;}),backgroundColor:cores.map(function(c){return c+'88';}),borderColor:cores,borderWidth:2,borderRadius:5,yAxisID:'y'},
+    {label:'Cobertura (dias)',data:skus.map(function(d){return d.cob>=999?null:Math.min(d.cob,250);}),type:'line',borderColor:'#a78bfa',backgroundColor:'transparent',pointBackgroundColor:cores,pointRadius:6,pointBorderWidth:2,borderWidth:2,tension:0.3,yAxisID:'y2'}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#8b95a8',font:{size:10},boxWidth:10}},
+      tooltip:{backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
+        callbacks:{label:function(c){if(c.datasetIndex===0)return ' Estoque: '+c.raw.toLocaleString('pt-BR')+' un';return ' Cobertura: '+(c.raw!=null?c.raw+'d':'-');}}},
+      annotation:{annotations:{
+        linha30:{type:'line',yMin:30,yMax:30,yScaleID:'y2',borderColor:'#fbbf24',borderWidth:1.5,borderDash:[6,4],label:{content:'30d',display:true,color:'#fbbf24',font:{size:9},position:'start'}},
+        linha15:{type:'line',yMin:15,yMax:15,yScaleID:'y2',borderColor:'#fb7185',borderWidth:1.5,borderDash:[6,4],label:{content:'15d crítico',display:true,color:'#fb7185',font:{size:9},position:'end'}}
+      }}
+    },
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#8b95a8',font:{size:9},maxRotation:35}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#5a6478',font:{size:9},callback:function(v){return v>=1000?(v/1000).toFixed(0)+'K':v;}},title:{display:true,text:'Estoque (un)',color:'#5a6478',font:{size:9}}},
+      y2:{position:'right',grid:{display:false},ticks:{color:'#a78bfa',font:{size:9},callback:function(v){return v+'d';}},title:{display:true,text:'Cobertura (dias)',color:'#a78bfa',font:{size:9}},min:0,max:250}
+    }
+  }});
+}
+
 /* ═══════════ CLAMED ═══════════ */
 var clRankKey='2026';
 function initClamed(){
@@ -2300,6 +2396,7 @@ function initClamed(){
     {label:'Top SKU 2026',val:'OFF Locao 200ML',sub:'🏆 Intocável',color:'#fbbf24'},
   ]);
   renderCLMesBars(); renderCLDonut(); renderCLLojas(); renderCLRank();
+  renderClEstoqueBarras();
 }
 
 function renderCLMesBars(){
@@ -2329,6 +2426,97 @@ function renderCLRank(){
   renderRankBars('cl-rank-bars',rows,'vol');
 }
 
+/* ═══════════ PANVEL ESTOQUE ═══════════ */
+const PV_ESTOQUE = [
+  {sku:'EXPOSIS Extreme Spray 40ML',           marca:'EXPOSIS', estoque:1,    cdRS:0,    cdPR:0,    lojas:1,    pend:0,   risco:'critico'},
+  {sku:'LYSOFORM Desinfetante Aerossol 250ML',  marca:'OUTROS',  estoque:0,    cdRS:0,    cdPR:0,    lojas:0,    pend:0,   risco:'critico'},
+  {sku:'OFF Sachet 12x7ML',                    marca:'OFF',     estoque:0,    cdRS:0,    cdPR:0,    lojas:0,    pend:0,   risco:'critico'},
+  {sku:'EXPOSIS Spray 150ML',                  marca:'EXPOSIS', estoque:620,  cdRS:41,   cdPR:82,   lojas:497,  pend:0,   risco:'atencao'},
+  {sku:'EXPOSIS Elet Refil 32,9ML',            marca:'EXPOSIS', estoque:1049, cdRS:58,   cdPR:28,   lojas:963,  pend:0,   risco:'ok'},
+  {sku:'RAID Refil Family 2un 32,9ML',         marca:'RAID',    estoque:1093, cdRS:0,    cdPR:216,  lojas:877,  pend:300, risco:'ok'},
+  {sku:'EXPOSIS Extreme Kit 100+52ML',         marca:'EXPOSIS', estoque:1127, cdRS:35,   cdPR:49,   lojas:1043, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Ultra Suave Spray 100ML',      marca:'EXPOSIS', estoque:1133, cdRS:247,  cdPR:6,    lojas:880,  pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Kit 100ML + Bebê 117G',        marca:'EXPOSIS', estoque:1235, cdRS:82,   cdPR:88,   lojas:1065, pend:12,  risco:'ok'},
+  {sku:'EXPOSIS Elet AP + Refil 32,9ML',       marca:'EXPOSIS', estoque:1323, cdRS:73,   cdPR:51,   lojas:1199, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Infantil Kit 100+52ML',        marca:'EXPOSIS', estoque:1360, cdRS:145,  cdPR:64,   lojas:1151, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Gel Bebê 117ML',               marca:'EXPOSIS', estoque:1495, cdRS:191,  cdPR:317,  lojas:987,  pend:0,   risco:'ok'},
+  {sku:'OFF Active Lotion 100ML',              marca:'OFF',     estoque:1613, cdRS:676,  cdPR:77,   lojas:860,  pend:0,   risco:'ok'},
+  {sku:'RAID Family Aparelho Elétrico',        marca:'RAID',    estoque:1645, cdRS:6,    cdPR:372,  lojas:1267, pend:540, risco:'ok'},
+  {sku:'RAID Elétrico Refil 32,9ML',          marca:'RAID',    estoque:1787, cdRS:147,  cdPR:28,   lojas:1612, pend:60,  risco:'ok'},
+  {sku:'RAID Apar+Refil 32,9ML',              marca:'RAID',    estoque:2206, cdRS:156,  cdPR:248,  lojas:1802, pend:288, risco:'ok'},
+  {sku:'EXPOSIS Gel 100ML',                    marca:'EXPOSIS', estoque:2793, cdRS:138,  cdPR:294,  lojas:2361, pend:0,   risco:'ok'},
+  {sku:'OFF Toque Leve Spray 100ML',           marca:'OFF',     estoque:2842, cdRS:365,  cdPR:280,  lojas:2197, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Gel Infantil 100ML',           marca:'EXPOSIS', estoque:3530, cdRS:624,  cdPR:504,  lojas:2402, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Icaridina Aero 100ML',         marca:'EXPOSIS', estoque:3550, cdRS:457,  cdPR:433,  lojas:2660, pend:0,   risco:'ok'},
+  {sku:'OFF Baby Loção 117ML',                 marca:'OFF',     estoque:3624, cdRS:1170, cdPR:868,  lojas:1586, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Extreme Spray 100ML',          marca:'EXPOSIS', estoque:3919, cdRS:488,  cdPR:677,  lojas:2754, pend:0,   risco:'ok'},
+  {sku:'OFF Aerosol 165ML',                    marca:'OFF',     estoque:4681, cdRS:715,  cdPR:1148, lojas:2818, pend:0,   risco:'ok'},
+  {sku:'EXPOSIS Infantil Spray 100ML',         marca:'EXPOSIS', estoque:4933, cdRS:940,  cdPR:874,  lojas:3119, pend:0,   risco:'ok'},
+  {sku:'OFF Gel Toque Leve 100G',              marca:'OFF',     estoque:5551, cdRS:682,  cdPR:479,  lojas:4390, pend:0,   risco:'ok'},
+  {sku:'OFF Family Loção 200ML',               marca:'OFF',     estoque:6086, cdRS:1805, cdPR:981,  lojas:3300, pend:0,   risco:'ok'},
+  {sku:'OFF Spray 170ML Oferta Esp',           marca:'OFF',     estoque:8039, cdRS:3609, cdPR:130,  lojas:4300, pend:0,   risco:'ok'},
+  {sku:'OFF Kids Loção 200ML',                 marca:'OFF',     estoque:9021, cdRS:1341, cdPR:4022, lojas:3658, pend:0,   risco:'ok'},
+];
+
+var pvEstoqueView  = 'barras';
+var pvEstoqueChart = null;
+
+function renderPVEstoqueBarras(){
+  var el = document.getElementById('pv-estoque-bars');
+  if(!el) return;
+  var maxEst = Math.max.apply(null, PV_ESTOQUE.map(function(d){return d.estoque;}));
+  var h = '';
+  PV_ESTOQUE.forEach(function(d,i){
+    var cor = d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';
+    var bg  = d.risco==='critico'?'border-left:2px solid #fb7185;background:rgba(251,113,113,0.04);':
+              d.risco==='atencao'?'border-left:2px solid #fbbf24;background:rgba(251,191,36,0.04);':'';
+    var pct = d.estoque===0?0:Math.max(1,Math.round(d.estoque/maxEst*100));
+    var estLabel = d.estoque===0?'ZERADO':d.estoque.toLocaleString('pt-BR')+' un';
+    var pendBadge = d.pend>0?('<span style="font-size:9px;font-weight:700;background:rgba(251,191,36,0.15);color:#fbbf24;border-radius:3px;padding:1px 5px;margin-left:6px;">⏳ '+d.pend.toLocaleString('pt-BR')+' pend.</span>'):'';
+    var alertaBadge = d.risco!=='ok'?('<span style="font-size:9px;font-weight:700;background:'+cor+'22;color:'+cor+';border-radius:3px;padding:1px 5px;margin-left:4px;">'+(d.risco==='critico'?'⚡ CRÍTICO':'⚠ ATENÇÃO')+'</span>'):'';
+    h += '<div class="bar-item" data-togglesel="1" style="'+bg+'">';
+    h += '<div class="bar-item-header">';
+    h += '<span class="bar-rank" style="background:'+cor+'22;color:'+cor+';">'+(i+1)+'</span>';
+    h += '<span class="bar-name">'+d.sku+alertaBadge+pendBadge+'</span>';
+    h += '<span style="font-size:10px;color:#5a6478;margin-right:6px;">'+estLabel+'</span>';
+    h += '<span class="bar-val" style="color:'+cor+'">'+d.marca+'</span>';
+    h += '</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+cor+';" data-pct="'+pct+'"></div></div>';
+    h += '<div class="bar-expand">';
+    h += '<div class="expand-item">Estoque Total: <span class="expand-val" style="color:'+cor+'">'+d.estoque.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">CD RS: <span class="expand-val" style="color:#8b95a8">'+d.cdRS.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">CD PR: <span class="expand-val" style="color:#8b95a8">'+d.cdPR.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Lojas: <span class="expand-val" style="color:#8b95a8">'+d.lojas.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Pendências: <span class="expand-val" style="color:'+(d.pend>0?'#fbbf24':'#5a6478')+'">'+d.pend.toLocaleString('pt-BR')+' un</span></div>';
+    h += '</div></div>';
+  });
+  el.innerHTML = h;
+  el.querySelectorAll('[data-togglesel]').forEach(function(r){r.addEventListener('click',function(){this.classList.toggle('selected');});});
+  setTimeout(function(){el.querySelectorAll('.bar-fill').forEach(function(bar){bar.style.width=bar.getAttribute('data-pct')+'%';});},80);
+}
+
+function renderPVEstoqueLinha(){
+  var ctx = document.getElementById('pv-estoque-chart');
+  if(!ctx) return;
+  if(pvEstoqueChart) pvEstoqueChart.destroy();
+  var skus = PV_ESTOQUE.filter(function(d){return d.estoque>0;}).slice(0,14);
+  var labels = skus.map(function(d){return d.sku.length>22?d.sku.substring(0,22)+'…':d.sku;});
+  var cores  = skus.map(function(d){return d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';});
+  pvEstoqueChart = new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[
+    {label:'Estoque Total (un)',data:skus.map(function(d){return d.estoque;}),backgroundColor:cores.map(function(c){return c+'88';}),borderColor:cores,borderWidth:2,borderRadius:5,yAxisID:'y'},
+    {label:'Pendências (un)',data:skus.map(function(d){return d.pend>0?d.pend:null;}),type:'line',borderColor:'#fbbf24',backgroundColor:'transparent',pointBackgroundColor:'#fbbf24',pointRadius:7,pointBorderWidth:2,borderWidth:2,tension:0.3,yAxisID:'y'}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#8b95a8',font:{size:10},boxWidth:10}},
+      tooltip:{backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
+        callbacks:{label:function(c){if(c.datasetIndex===0)return ' Estoque: '+c.raw.toLocaleString('pt-BR')+' un';return ' Pendência: '+c.raw.toLocaleString('pt-BR')+' un';}}}
+    },
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#8b95a8',font:{size:9},maxRotation:35}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#5a6478',font:{size:9},callback:function(v){return v>=1000?(v/1000).toFixed(0)+'K':v;}},title:{display:true,text:'Estoque (un)',color:'#5a6478',font:{size:9}}}
+    }
+  }});
+}
+
 /* ═══════════ PANVEL ═══════════ */
 var pvBarMode='rec', pvDonutYear='2024', pvRankYear='2024';
 function initPanvel(){
@@ -2341,6 +2529,7 @@ function initPanvel(){
     {label:'Ticket médio',val:'R$ 38,25',sub:'Receita ÷ volume',color:'#60a5fa'},
   ]);
   renderPVAnoBars(); renderPVDonut(); renderPVLine(); renderPVLojas(); renderPVRank(); renderPVMeta();
+  renderPVEstoqueBarras();
 }
 
 function renderPVAnoBars(){
@@ -2871,147 +3060,125 @@ function renderNielsenFytdBar(){
   var ctx = document.getElementById('nielsen-fytd-bar');
   if(!ctx) return;
   if(nielsenFytdChart) nielsenFytdChart.destroy();
-
   var d = NIELSEN_DATA[nielsenMarket];
-  var marcas = ['OFF!','EXPOSIS','XO INSETO','SUPER REPELEX','SBP'];
-  var cores  = ['#fbbf24','#3b82f6','#fb7185','#34d399','#a78bfa'];
-  var labels = marcas;
-  var f25 = marcas.map(function(m){ return Math.round(d.fytd25[m]*1000)/10; });
-  var f26 = marcas.map(function(m){ return Math.round(d.fytd26[m]*1000)/10; });
-  var deltas = marcas.map(function(m){ return Math.round((d.fytd26[m]-d.fytd25[m])*1000)/10; });
+  var marcas  = ['OFF!','EXPOSIS','XO INSETO','SUPER REPELEX','SBP'];
+  var cores   = ['#fbbf24','#3b82f6','#fb7185','#34d399','#a78bfa'];
+  var f25 = marcas.map(function(m){return Math.round(d.fytd25[m]*1000)/10;});
+  var f26 = marcas.map(function(m){return Math.round(d.fytd26[m]*1000)/10;});
+  var deltas = marcas.map(function(m){return Math.round((d.fytd26[m]-d.fytd25[m])*1000)/10;});
 
   nielsenFytdChart = new Chart(ctx,{
     type:'bar',
     data:{
-      labels: labels,
+      labels: marcas,
       datasets:[
-        { label:'FYTD25', data:f25,
-          backgroundColor: cores.map(function(c){return c+'44';}),
-          borderColor: cores, borderWidth:2, borderRadius:6,
-        },
-        { label:'FYTD26', data:f26,
-          backgroundColor: cores.map(function(c){return c+'cc';}),
-          borderColor: cores, borderWidth:2, borderRadius:6,
-        },
+        {label:'FYTD25', data:f25,
+          backgroundColor:'rgba(255,255,255,0.06)',
+          borderColor:cores.map(function(c){return c+'88';}),
+          borderWidth:2, borderRadius:5, borderSkipped:false},
+        {label:'FYTD26', data:f26,
+          backgroundColor:cores.map(function(c){return c+'cc';}),
+          borderColor:cores, borderWidth:0, borderRadius:5, borderSkipped:false},
       ]
     },
     options:{
-      indexAxis:'y',
-      responsive:true, maintainAspectRatio:false,
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
       plugins:{
-        legend:{ display:true, position:'top',
-          labels:{ color:'#8b95a8', font:{size:11}, boxWidth:12, padding:16 }
-        },
+        legend:{display:false},
         tooltip:{
-          backgroundColor:'#0d1422', titleColor:'#e2e8f0', bodyColor:'#8b95a8',
-          borderColor:'rgba(255,255,255,0.08)', borderWidth:1,
+          backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',
+          borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
           callbacks:{
+            title:function(items){return items[0].label;},
             label:function(c){return ' '+c.dataset.label+': '+c.raw.toFixed(1)+'%';},
             afterBody:function(items){
-              var i = items[0].dataIndex;
-              var delta = deltas[i];
-              return ['Δ pp: '+(delta>=0?'+':'')+delta.toFixed(1)+' pp'];
+              var i=items[0].dataIndex;
+              var d2=deltas[i];
+              return ['Δ: '+(d2>=0?'+':'')+d2.toFixed(1)+' pp vs FYTD25'];
             }
           }
         }
       },
       scales:{
-        x:{ grid:{color:'rgba(255,255,255,0.04)'},
-            ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
-            min:0, max:35
+        x:{
+          grid:{color:'rgba(255,255,255,0.04)'},
+          ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
+          min:0, max:35
         },
-        y:{ grid:{display:false}, ticks:{color:'#c8ccda',font:{size:12,weight:'600'}} }
+        y:{grid:{display:false}, ticks:{color:'#c8ccda',font:{size:12,weight:'600'}}}
       }
-    }
+    },
+    plugins:[{
+      id:'deltaLabels',
+      afterDraw:function(chart){
+        var ctx2 = chart.ctx;
+        var meta = chart.getDatasetMeta(1);
+        meta.data.forEach(function(bar,i){
+          var delta = deltas[i];
+          var color = delta>=0?'#34d399':'#fb7185';
+          var sign  = delta>=0?'+':'';
+          ctx2.save();
+          ctx2.font = '700 10px sans-serif';
+          ctx2.fillStyle = color;
+          ctx2.textAlign = 'left';
+          ctx2.textBaseline = 'middle';
+          ctx2.fillText(sign+delta.toFixed(1)+' pp', bar.x+8, bar.y);
+          ctx2.restore();
+        });
+      }
+    }]
   });
 }
 
 function renderNielsenCompBar(){
-  var ctx = document.getElementById('nielsen-comp-bar');
-  if(!ctx) return;
-  if(nielsenCompChart) nielsenCompChart.destroy();
-
+  var el = document.getElementById('nielsen-comp-custom');
+  if(!el) return;
   var fytdKey = nielsenCompModo;
-  var markets = ['Farma Sul','INFC SC','INFC RS','INFC PR'];
-  var keys    = ['farmasul','sc','rs','pr'];
-  var marcas  = ['OFF!','EXPOSIS','SCJ Total','XO INSETO','SUPER REPELEX','SBP'];
-  var cores   = ['#fbbf24','#3b82f6','#f59e0b','#fb7185','#34d399','#a78bfa'];
+  var markets = [
+    {label:'Farma Sul', key:'farmasul', color:'#fbbf24'},
+    {label:'INFC SC',   key:'sc',       color:'#3b82f6'},
+    {label:'INFC RS',   key:'rs',       color:'#a78bfa'},
+    {label:'INFC PR',   key:'pr',       color:'#34d399'},
+  ];
+  var brands = [
+    {nome:'SCJ Total',     cor:'#f59e0b', fn:function(d){return (d['OFF!']+d['EXPOSIS'])*100;}},
+    {nome:'OFF!',          cor:'#fbbf24', fn:function(d){return d['OFF!']*100;}},
+    {nome:'EXPOSIS',       cor:'#3b82f6', fn:function(d){return d['EXPOSIS']*100;}},
+    {nome:'XO INSETO',     cor:'#fb7185', fn:function(d){return d['XO INSETO']*100;}},
+    {nome:'SUPER REPELEX', cor:'#34d399', fn:function(d){return d['SUPER REPELEX']*100;}},
+    {nome:'SBP',           cor:'#a78bfa', fn:function(d){return d['SBP']*100;}},
+  ];
 
-  // Para cada market, calcular share de cada item e ordenar por share desc
-  // Mostrar como barras horizontais separadas por market (label = market - marca)
-  var allLabels = [];
-  var allVals   = [];
-  var allColors = [];
-  var allBg     = [];
-
-  keys.forEach(function(k, ki){
-    var d = NIELSEN_DATA[k][fytdKey];
-    var scj = d['OFF!'] + d['EXPOSIS'];
-    var items = [
-      {nome:'OFF!',         val:d['OFF!'],         cor:'#fbbf24'},
-      {nome:'EXPOSIS',      val:d['EXPOSIS'],       cor:'#3b82f6'},
-      {nome:'SCJ Total',    val:scj,                cor:'#f59e0b'},
-      {nome:'XO INSETO',    val:d['XO INSETO'],     cor:'#fb7185'},
-      {nome:'SUPER REPELEX',val:d['SUPER REPELEX'], cor:'#34d399'},
-      {nome:'SBP',          val:d['SBP'],           cor:'#a78bfa'},
-    ].sort(function(a,b){return b.val-a.val;});
-
-    // Separador de market
-    allLabels.push(markets[ki]);
-    allVals.push(null);
-    allColors.push('transparent');
-    allBg.push('transparent');
-
-    items.forEach(function(item){
-      allLabels.push('  '+item.nome);
-      allVals.push(Math.round(item.val*1000)/10);
-      allColors.push(item.cor);
-      allBg.push(item.cor+'99');
+  var html2 = '';
+  markets.forEach(function(mkt){
+    var d = NIELSEN_DATA[mkt.key][fytdKey];
+    html2 += '<div style="margin-bottom:20px;">';
+    html2 += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">';
+    html2 += '<span style="width:10px;height:10px;border-radius:2px;background:'+mkt.color+';display:inline-block;flex-shrink:0;"></span>';
+    html2 += '<span style="font-size:12px;font-weight:700;color:#c8ccda;">'+mkt.label+'</span>';
+    html2 += '</div>';
+    brands.forEach(function(b){
+      var val = Math.round(b.fn(d)*10)/10;
+      var pct = Math.min(100, Math.round(val/40*100));
+      var isSCJ = b.nome==='SCJ Total';
+      html2 += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">';
+      html2 += '<span style="font-size:10px;color:#5a6478;width:90px;text-align:right;flex-shrink:0;">'+b.nome+'</span>';
+      html2 += '<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:4px;height:'+(isSCJ?'10':'7')+'px;overflow:hidden;">';
+      html2 += '<div class="bar-fill" style="height:100%;width:0%;background:'+b.cor+(isSCJ?';':'88;')+'border-radius:4px;" data-pct="'+pct+'"></div>';
+      html2 += '</div>';
+      html2 += '<span style="font-size:'+(isSCJ?'12':'11')+'px;font-weight:'+(isSCJ?'700':'400')+';color:'+b.cor+';width:38px;text-align:right;">'+val.toFixed(1)+'%</span>';
+      html2 += '</div>';
     });
+    html2 += '<div style="height:1px;background:rgba(255,255,255,0.04);margin-top:12px;"></div>';
+    html2 += '</div>';
   });
 
-  nielsenCompChart = new Chart(ctx,{
-    type:'bar',
-    data:{
-      labels: allLabels,
-      datasets:[{
-        label:'$ Share',
-        data: allVals,
-        backgroundColor: allBg,
-        borderColor: allColors,
-        borderWidth: 2,
-        borderRadius: 5,
-        borderSkipped: false,
-      }]
-    },
-    options:{
-      indexAxis:'y',
-      responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{ display:false },
-        tooltip:{
-          backgroundColor:'#0d1422', titleColor:'#e2e8f0', bodyColor:'#8b95a8',
-          borderColor:'rgba(255,255,255,0.08)', borderWidth:1,
-          callbacks:{
-            label:function(c){ return c.raw!=null?' '+c.raw.toFixed(1)+'%':''; }
-          }
-        }
-      },
-      scales:{
-        x:{ grid:{color:'rgba(255,255,255,0.04)'},
-            ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
-            min:0, max:40
-        },
-        y:{ grid:{display:false},
-            ticks:{color:'#8b95a8',font:{size:11},
-              callback:function(v){
-                return String(v).trim().length===0?'':v;
-              }
-            }
-        }
-      }
-    }
-  });
+  el.innerHTML = html2;
+  setTimeout(function(){
+    el.querySelectorAll('.bar-fill').forEach(function(bar){
+      bar.style.width = bar.getAttribute('data-pct')+'%';
+    });
+  }, 80);
 }
 
 function setNielsenCompModo(modo, btn){
@@ -3020,6 +3187,7 @@ function setNielsenCompModo(modo, btn){
   btn.classList.add('active','blue');
   renderNielsenCompBar();
 }
+
 
 function initNielsenCharts(){
   setNielsenMarket('farmasul', null);
@@ -3410,7 +3578,7 @@ function setSJEstoqueView(view, btn){
 /* ═══════════ ACOMPANHAMENTO OLs ═══════════ */
 const OL_DATA = {
   prsc:{
-    label:'OL PR/SC', pdvsTotal:2583, posit25:2175, posit26:2181,
+    label:'GD PR/SC', pdvsTotal:2583, posit25:2175, posit26:2181,
     catAnt:11246968, catAtual:9355479, propAnt:4298208, propAtual:3637920,
     shareAnt:45.2, shareAtual:48.0, shareVar:2.8,
     clientes:[
@@ -3437,7 +3605,7 @@ const OL_DATA = {
     ]
   },
   rs:{
-    label:'OL RS', pdvsTotal:1936, posit25:1525, posit26:1447,
+    label:'GD RS', pdvsTotal:1936, posit25:1525, posit26:1447,
     catAnt:7345914, catAtual:5785405, propAnt:3197950, propAtual:2102637,
     shareAnt:51.7, shareAtual:50.6, shareVar:-1.1,
     clientes:[
@@ -3713,25 +3881,123 @@ function renderGAMMeta(){
 }
 
 
+var nsEstoqueView = 'barras';
+var nsEstoqueTab  = 'hb';
+var nsEstoqueChart = null;
+
+function renderNsEstoqueBarras(){
+  var el = document.getElementById('ns-estoque-bars');
+  if(!el) return;
+  var data = nsEstoqueTab === 'hb' ? NS_ESTOQUE_HB : NS_ESTOQUE_ED;
+  var maxEst = Math.max.apply(null, data.map(function(d){return d.estoque;}));
+  var h = '';
+  data.forEach(function(d,i){
+    var cor = d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';
+    var bg  = d.risco==='critico'?'border-left:2px solid #fb7185;background:rgba(251,113,113,0.04);':
+              d.risco==='atencao'?'border-left:2px solid #fbbf24;background:rgba(251,191,36,0.04);':'';
+    var pct = Math.min(100,Math.round(d.estoque/maxEst*100));
+    var cobLabel = d.cob>=999?'sem giro':d.cob+'d';
+    var alerta = d.risco!=='ok'?('<span style="font-size:9px;font-weight:700;background:'+cor+'22;color:'+cor+';border-radius:3px;padding:1px 5px;margin-left:6px;">'+cobLabel+'</span>'):'';
+    h += '<div class="bar-item" data-togglesel="1">';
+    h += '<div class="bar-item-header">';
+    h += '<span class="bar-rank" style="background:'+cor+'22;color:'+cor+';">'+(i+1)+'</span>';
+    h += '<span class="bar-name">'+d.sku+alerta+'</span>';
+    h += '<span style="font-size:10px;color:#5a6478;margin-right:6px;">'+d.estoque.toLocaleString('pt-BR')+' un</span>';
+    h += '<span class="bar-val" style="color:'+cor+'">'+cobLabel+' cob.</span>';
+    h += '</div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+cor+';" data-pct="'+pct+'"></div></div>';
+    h += '<div class="bar-expand">';
+    h += '<div class="expand-item">Estoque: <span class="expand-val" style="color:'+cor+'">'+d.estoque.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Venda média/mês: <span class="expand-val" style="color:#8b95a8">'+d.venda.toLocaleString('pt-BR')+' un</span></div>';
+    h += '<div class="expand-item">Cobertura: <span class="expand-val" style="color:'+cor+'">'+cobLabel+'</span></div>';
+    h += '</div></div>';
+  });
+  el.innerHTML = h;
+  el.querySelectorAll('[data-togglesel]').forEach(function(r){r.addEventListener('click',function(){this.classList.toggle('selected');});});
+  setTimeout(function(){el.querySelectorAll('.bar-fill').forEach(function(bar){bar.style.width=bar.getAttribute('data-pct')+'%';});},80);
+}
+
+function setNsEstoqueTab(tab, btn){
+  nsEstoqueTab = tab;
+  document.querySelectorAll('#ns-est-tab-hb,#ns-est-tab-ed').forEach(function(b){b.classList.remove('active','blue');});
+  btn.classList.add('active','blue');
+  if(nsEstoqueView==='barras') renderNsEstoqueBarras(); else renderNsEstoqueLinha();
+  updateNsEstoqueKPIs();
+}
+
+function updateNsEstoqueKPIs(){
+  var isHB = nsEstoqueTab==='hb';
+  var est = isHB ? 35969 : 10081;
+  var vnd = isHB ? 11787 : 1697;
+  var cob = isHB ? 92    : 178;
+  var at  = isHB ? 2     : 1;
+  var corAt = at>0?'#fbbf24':'#34d399';
+  var el1=document.getElementById('ns-kpi-est'), el2=document.getElementById('ns-kpi-at');
+  var el3=document.getElementById('ns-kpi-vnd'), el4=document.getElementById('ns-kpi-cob');
+  if(el1) el1.textContent = est.toLocaleString('pt-BR');
+  if(el2){el2.textContent = at; el2.style.color=corAt;}
+  if(el3) el3.textContent = vnd.toLocaleString('pt-BR');
+  if(el4) el4.textContent = cob+' dias';
+}
+
+
+function renderNsEstoqueLinha(){
+  var ctx = document.getElementById('ns-estoque-chart');
+  if(!ctx) return;
+  if(nsEstoqueChart) nsEstoqueChart.destroy();
+  var data = nsEstoqueTab==='hb' ? NS_ESTOQUE_HB : NS_ESTOQUE_ED;
+  var skus = data.filter(function(d){return d.venda>0;}).slice(0,12);
+  var labels = skus.map(function(d){return d.sku.length>20?d.sku.substring(0,20)+'…':d.sku;});
+  var estoqueAtual = skus.map(function(d){return d.estoque;});
+  var cobertura    = skus.map(function(d){return d.cob>=999?null:Math.min(d.cob,120);});
+  var cores = skus.map(function(d){return d.risco==='critico'?'#fb7185':d.risco==='atencao'?'#fbbf24':'#34d399';});
+  nsEstoqueChart = new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[
+    {label:'Estoque Atual (un)',data:estoqueAtual,backgroundColor:cores.map(function(c){return c+'88';}),borderColor:cores,borderWidth:2,borderRadius:5,yAxisID:'y'},
+    {label:'Cobertura (dias)',data:cobertura,type:'line',borderColor:'#a78bfa',backgroundColor:'transparent',pointBackgroundColor:cores,pointRadius:6,pointBorderWidth:2,borderWidth:2,tension:0.3,yAxisID:'y2'}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:'top',labels:{color:'#8b95a8',font:{size:10},boxWidth:10}},
+      tooltip:{backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
+        callbacks:{label:function(c){if(c.datasetIndex===0)return ' Estoque: '+c.raw.toLocaleString('pt-BR')+' un';return ' Cobertura: '+(c.raw!=null?c.raw+'d':'-');}}},
+      annotation:{annotations:{
+        linha30:{type:'line',yMin:30,yMax:30,yScaleID:'y2',borderColor:'#fbbf24',borderWidth:1.5,borderDash:[6,4],label:{content:'30d',display:true,color:'#fbbf24',font:{size:9},position:'start'}},
+        linha15:{type:'line',yMin:15,yMax:15,yScaleID:'y2',borderColor:'#fb7185',borderWidth:1.5,borderDash:[6,4],label:{content:'15d critico',display:true,color:'#fb7185',font:{size:9},position:'end'}}
+      }}
+    },
+    scales:{
+      x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#8b95a8',font:{size:9},maxRotation:35}},
+      y:{position:'left',grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#5a6478',font:{size:9},callback:function(v){return v>=1000?(v/1000).toFixed(0)+'K':v;}},title:{display:true,text:'Estoque (un)',color:'#5a6478',font:{size:9}}},
+      y2:{position:'right',grid:{display:false},ticks:{color:'#a78bfa',font:{size:9},callback:function(v){return v+'d';}},title:{display:true,text:'Cobertura (dias)',color:'#a78bfa',font:{size:9}},min:0,max:120}
+    }
+  }});
+}
+
+
 function setNsEstoqueView(view, btn){
   btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});
   btn.classList.add('active','blue');
+  nsEstoqueView = view;
   document.getElementById('ns-estoque-barras').style.display = view==='barras'?'block':'none';
   document.getElementById('ns-estoque-linha').style.display  = view==='linha'?'block':'none';
+  if(view==='linha') renderNsEstoqueLinha();
+  else renderNsEstoqueBarras();
 }
 
 function setClEstoqueView(view, btn){
   btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});
   btn.classList.add('active','blue');
+  clEstoqueView = view;
   document.getElementById('cl-estoque-barras').style.display = view==='barras'?'block':'none';
   document.getElementById('cl-estoque-linha').style.display  = view==='linha'?'block':'none';
+  if(view==='linha') renderClEstoqueLinha(); else renderClEstoqueBarras();
 }
 
 function setPvEstoqueView(view, btn){
   btn.closest('.toggle-group').querySelectorAll('.tgl').forEach(function(b){b.classList.remove('active','blue');});
   btn.classList.add('active','blue');
+  pvEstoqueView = view;
   document.getElementById('pv-estoque-barras').style.display = view==='barras'?'block':'none';
   document.getElementById('pv-estoque-linha').style.display  = view==='linha'?'block':'none';
+  if(view==='linha') renderPVEstoqueLinha(); else renderPVEstoqueBarras();
 }
 
 function setGamEstoqueView(view, btn){
@@ -3982,6 +4248,46 @@ window.addEventListener('load',function(){
   initNielsenCharts();
 });
 
+const NS_ESTOQUE_HB = [
+  {sku:'REPELENTE OFF AERO 165ML',estoque:3773,venda:1861,cob:61,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS SPRAY EXTREME 100ML',estoque:3526,venda:237,cob:446,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS AERO EXTREME 100ML',estoque:2957,venda:114,cob:778,risco:'ok'},
+  {sku:'REPELENTE OFF GEL HIDRAT TOQUE LEVE 100G',estoque:2848,venda:480,cob:178,risco:'ok'},
+  {sku:'KIT REPELENTE EXPOSIS EXTREME ICARIDINA 10',estoque:2612,venda:124,cob:632,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS INFANTIL GEL SEM PERFUME',estoque:2566,venda:263,cob:293,risco:'ok'},
+  {sku:'KIT REPELENTE EXPOSIS GLICERINA ICARIDINA ',estoque:2233,venda:216,cob:310,risco:'ok'},
+  {sku:'KIT REPELENTE EXPOSIS EXTREME 100ML+INFANT',estoque:2170,venda:303,cob:215,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS GEL 100ML (ESP)',estoque:2112,venda:88,cob:720,risco:'ok'},
+  {sku:'REPELENTE OFF GEL BABY 117G',estoque:1956,venda:1078,cob:54,risco:'ok'},
+  {sku:'REPELENTE OFF KIDS LV200ML PG117ML',estoque:1763,venda:1487,cob:36,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS ICARIDINA SPRAY 150ML',estoque:1531,venda:156,cob:294,risco:'ok'},
+  {sku:'REPELENTE OFF LOCAO LONGA DURACAO 100ML',estoque:1290,venda:488,cob:79,risco:'ok'},
+  {sku:'REPELENTE OFF SPRAY FAMILY 170ML',estoque:1220,venda:2178,cob:17,risco:'atencao'},
+  {sku:'REPELENTE OFF LOCAO FAMILY 200ML',estoque:1035,venda:2343,cob:13,risco:'critico'},
+  {sku:'REPELENTE EXPOSIS BEBE GEL SEM PERFUME 117',estoque:949,venda:70,cob:407,risco:'ok'},
+  {sku:'REPELENTE GLICERINA ICARIDINA AGUA PURIFIC',estoque:695,venda:176,cob:118,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS ULTRASSUAVE 100ML',estoque:456,venda:58,cob:236,risco:'ok'},
+  {sku:'REPELENTE EXPOSIS ICARIDINA SPRAY INFANTIL',estoque:276,venda:65,cob:127,risco:'ok'},
+];
+const NS_ESTOQUE_ED = [
+  {sku:'INSETICIDA RAID MULTI BASE DAGUA LV420ML P',estoque:3317,venda:344,cob:289,risco:'ok'},
+  {sku:'INSETICIDA POVIDINE MULTI INSETOS RAID OLE',estoque:1798,venda:175,cob:308,risco:'ok'},
+  {sku:'REPELENTE RAID ELETRICO 45 NOITES 2UN 32,9',estoque:1373,venda:262,cob:157,risco:'ok'},
+  {sku:'INSETICIDA  MULTI INSETOS RAID 420ML',estoque:671,venda:144,cob:140,risco:'ok'},
+  {sku:'INSETICIDA RAID MULTI EUCALIPTO LV+PG- 420',estoque:645,venda:155,cob:125,risco:'ok'},
+  {sku:'DESINFETANTE AERO LYSOFORM ORIGINAL 55ML',estoque:610,venda:78,cob:235,risco:'ok'},
+  {sku:'REPELENTE RAID ELETRICO FAMILY 45 NOITES 2',estoque:569,venda:96,cob:178,risco:'ok'},
+  {sku:'REPELENTE RAID LIQ ELET AP FAMILY REFIL 45',estoque:558,venda:270,cob:62,risco:'ok'},
+  {sku:'REPELENTE RAID LIQ ELET AP REFIL 45 NOITES',estoque:225,venda:110,cob:61,risco:'ok'},
+  {sku:'REPELENTE RAID LIQ ELET REFIL 45 NOITES 32',estoque:223,venda:50,cob:134,risco:'ok'},
+  {sku:'INSETICIDA RAID AQUA PROTECTION LEVPAG 420',estoque:47,venda:3,cob:470,risco:'ok'},
+  {sku:'REPELENTE LIQ ELET EXPOSIS CASA REFIL 32,9',estoque:18,venda:1,cob:540,risco:'ok'},
+  {sku:'REPELENTE RAID LIQ ELET REFIL FAMILY 45 NO',estoque:15,venda:1,cob:450,risco:'ok'},
+  {sku:'INSETICIDA RAID MULTI CITRONELA LV+PG- 420',estoque:3,venda:1,cob:90,risco:'ok'},
+  {sku:'ALCOOL GEL LYSOFORM P/MAOS 70INPPM ORIG 10',estoque:3,venda:4,cob:22,risco:'atencao'},
+  {sku:'REPELENTE LIQ ELET EXPOSIS AP CASA REFIL 4',estoque:3,venda:0,cob:999,risco:'ok'},
+  {sku:'LENCO DESINFETANTE LYSOFORM ORIGINAL 36UN',estoque:2,venda:2,cob:30,risco:'ok'},
+];
 </script>
 </body>
 </html>
