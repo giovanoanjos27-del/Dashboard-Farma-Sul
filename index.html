@@ -183,17 +183,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
 </div>
 
 <!-- FILTERS -->
-<div class="filters">
-  <span class="filter-label">FILTROS</span>
-  <select class="fsel" id="f-ano" onchange="applyFilters()">
-    <option value="todos">Todos os anos</option>
-    <option value="2024">2024</option>
-    <option value="2025">2025</option>
-    <option value="2026">2026 (parcial)</option>
-  </select>
-  <button class="btn-clear" onclick="clearFilters()">✕ Limpar</button>
-  <span class="filter-count" id="filter-count">Exibindo: todos os dados</span>
-</div>
+
 
 <!-- ═══════════ NIELSEN ═══════════ -->
 <div class="main active" id="panel-nielsen">
@@ -258,7 +248,7 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
         <button class="tgl" onclick="setNielsenCompModo('fytd25',this)">FYTD25</button>
       </div>
     </div>
-    <div id="nielsen-comp-custom" style="padding:4px 0;"></div>
+    <div id="nielsen-comp-custom" style="padding:8px 0;"></div>
   </div>
 
   <div class="dash-footer"><p>Fonte: NielsenIQ · Personal Repellent · $ Share · Jul/2025–Fev/2026</p><p>Abril 2026</p></div>
@@ -3175,21 +3165,32 @@ function renderNielsenFytdBar(){
   var deltas = marcas.map(function(m){return Math.round((d.fytd26[m]-d.fytd25[m])*1000)/10;});
 
   nielsenFytdChart = new Chart(ctx,{
-    type:'bar',
+    type:'line',
     data:{
       labels: marcas,
       datasets:[
         {label:'FYTD25', data:f25,
-          backgroundColor:'rgba(255,255,255,0.06)',
-          borderColor:cores.map(function(c){return c+'88';}),
-          borderWidth:2, borderRadius:5, borderSkipped:false},
+          borderColor:'rgba(255,255,255,0.25)',
+          backgroundColor:'transparent',
+          borderWidth:2, borderDash:[6,4],
+          pointBackgroundColor:cores,
+          pointBorderColor:cores,
+          pointRadius:5, pointHoverRadius:7,
+          tension:0.35},
         {label:'FYTD26', data:f26,
-          backgroundColor:cores.map(function(c){return c+'cc';}),
-          borderColor:cores, borderWidth:0, borderRadius:5, borderSkipped:false},
+          borderColor:'rgba(255,255,255,0.15)',
+          backgroundColor:'transparent',
+          borderWidth:0,
+          pointBackgroundColor:cores,
+          pointBorderColor:cores,
+          pointBorderWidth:3,
+          pointRadius:8, pointHoverRadius:10,
+          pointStyle:'rectRounded',
+          tension:0.35},
       ]
     },
     options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      responsive:true, maintainAspectRatio:false,
       plugins:{
         legend:{display:false},
         tooltip:{
@@ -3209,10 +3210,13 @@ function renderNielsenFytdBar(){
       scales:{
         x:{
           grid:{color:'rgba(255,255,255,0.04)'},
-          ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
-          min:0, max:35
+          ticks:{color:'#c8ccda',font:{size:12,weight:'600'}}
         },
-        y:{grid:{display:false}, ticks:{color:'#c8ccda',font:{size:12,weight:'600'}}}
+        y:{
+          grid:{color:'rgba(255,255,255,0.04)'},
+          ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
+          min:0, max:40
+        }
       }
     },
     plugins:[{
@@ -3220,16 +3224,16 @@ function renderNielsenFytdBar(){
       afterDraw:function(chart){
         var ctx2 = chart.ctx;
         var meta = chart.getDatasetMeta(1);
-        meta.data.forEach(function(bar,i){
+        meta.data.forEach(function(point,i){
           var delta = deltas[i];
           var color = delta>=0?'#34d399':'#fb7185';
-          var sign  = delta>=0?'+':'';
+          var sign  = delta>=0?'+':'-';
           ctx2.save();
           ctx2.font = '700 10px sans-serif';
           ctx2.fillStyle = color;
-          ctx2.textAlign = 'left';
-          ctx2.textBaseline = 'middle';
-          ctx2.fillText(sign+delta.toFixed(1)+' pp', bar.x+8, bar.y);
+          ctx2.textAlign = 'center';
+          ctx2.textBaseline = 'bottom';
+          ctx2.fillText(sign+Math.abs(delta).toFixed(1)+' pp', point.x, point.y-12);
           ctx2.restore();
         });
       }
@@ -3248,44 +3252,63 @@ function renderNielsenCompBar(){
     {label:'INFC PR',   key:'pr',       color:'#34d399'},
   ];
   var brands = [
-    {nome:'SCJ Total',     cor:'#f59e0b', fn:function(d){return (d['OFF!']+d['EXPOSIS'])*100;}},
-    {nome:'OFF!',          cor:'#fbbf24', fn:function(d){return d['OFF!']*100;}},
-    {nome:'EXPOSIS',       cor:'#3b82f6', fn:function(d){return d['EXPOSIS']*100;}},
-    {nome:'XO INSETO',     cor:'#fb7185', fn:function(d){return d['XO INSETO']*100;}},
-    {nome:'SUPER REPELEX', cor:'#34d399', fn:function(d){return d['SUPER REPELEX']*100;}},
-    {nome:'SBP',           cor:'#a78bfa', fn:function(d){return d['SBP']*100;}},
+    {nome:'SCJ Total',     cor:'#f59e0b', fn:function(d){return Math.round((d['OFF!']+d['EXPOSIS'])*1000)/10;}},
+    {nome:'OFF!',          cor:'#fbbf24', fn:function(d){return Math.round(d['OFF!']*1000)/10;}},
+    {nome:'EXPOSIS',       cor:'#3b82f6', fn:function(d){return Math.round(d['EXPOSIS']*1000)/10;}},
+    {nome:'XO INSETO',     cor:'#fb7185', fn:function(d){return Math.round(d['XO INSETO']*1000)/10;}},
+    {nome:'SUPER REPELEX', cor:'#34d399', fn:function(d){return Math.round(d['SUPER REPELEX']*1000)/10;}},
+    {nome:'SBP',           cor:'#a78bfa', fn:function(d){return Math.round(d['SBP']*1000)/10;}},
   ];
 
-  var html2 = '';
-  markets.forEach(function(mkt){
-    var d = NIELSEN_DATA[mkt.key][fytdKey];
-    html2 += '<div style="margin-bottom:20px;">';
-    html2 += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">';
-    html2 += '<span style="width:10px;height:10px;border-radius:2px;background:'+mkt.color+';display:inline-block;flex-shrink:0;"></span>';
-    html2 += '<span style="font-size:12px;font-weight:700;color:#c8ccda;">'+mkt.label+'</span>';
-    html2 += '</div>';
-    brands.forEach(function(b){
-      var val = Math.round(b.fn(d)*10)/10;
-      var pct = Math.min(100, Math.round(val/40*100));
-      var isSCJ = b.nome==='SCJ Total';
-      html2 += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">';
-      html2 += '<span style="font-size:10px;color:#5a6478;width:90px;text-align:right;flex-shrink:0;">'+b.nome+'</span>';
-      html2 += '<div style="flex:1;background:rgba(255,255,255,0.04);border-radius:4px;height:'+(isSCJ?'10':'7')+'px;overflow:hidden;">';
-      html2 += '<div class="bar-fill" style="height:100%;width:0%;background:'+b.cor+(isSCJ?';':'88;')+'border-radius:4px;" data-pct="'+pct+'"></div>';
-      html2 += '</div>';
-      html2 += '<span style="font-size:'+(isSCJ?'12':'11')+'px;font-weight:'+(isSCJ?'700':'400')+';color:'+b.cor+';width:38px;text-align:right;">'+val.toFixed(1)+'%</span>';
-      html2 += '</div>';
-    });
-    html2 += '<div style="height:1px;background:rgba(255,255,255,0.04);margin-top:12px;"></div>';
-    html2 += '</div>';
+  var mktLabels = markets.map(function(m){return m.label;});
+
+  var datasets = brands.map(function(b){
+    return {
+      label: b.nome,
+      data: markets.map(function(m){ return b.fn(NIELSEN_DATA[m.key][fytdKey]); }),
+      borderColor: b.cor,
+      backgroundColor: 'transparent',
+      pointBackgroundColor: b.cor,
+      pointBorderColor: b.cor,
+      pointRadius: b.nome==='SCJ Total'?7:5,
+      pointHoverRadius: 9,
+      borderWidth: b.nome==='SCJ Total'?2.5:1.5,
+      borderDash: b.nome==='SCJ Total'?[]:[4,3],
+      tension: 0.35,
+    };
   });
 
-  el.innerHTML = html2;
-  setTimeout(function(){
-    el.querySelectorAll('.bar-fill').forEach(function(bar){
-      bar.style.width = bar.getAttribute('data-pct')+'%';
-    });
-  }, 80);
+  el.innerHTML = '<div style="position:relative;width:100%;height:280px;"><canvas id="nielsen-comp-line"></canvas></div>';
+
+  if(window._nielsenCompChart) window._nielsenCompChart.destroy();
+  var ctx = document.getElementById('nielsen-comp-line');
+  window._nielsenCompChart = new Chart(ctx, {
+    type:'line',
+    data:{ labels: mktLabels, datasets: datasets },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{
+          display:true, position:'bottom',
+          labels:{color:'#8b95a8',font:{size:10},boxWidth:10,padding:12,
+            filter:function(item){ return item.text !== 'SCJ Total'; }}
+        },
+        tooltip:{
+          backgroundColor:'#0d1422',titleColor:'#e2e8f0',bodyColor:'#8b95a8',
+          borderColor:'rgba(255,255,255,0.08)',borderWidth:1,
+          callbacks:{label:function(c){return ' '+c.dataset.label+': '+c.raw.toFixed(1)+'%';}}
+        }
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.04)'}, ticks:{color:'#c8ccda',font:{size:11,weight:'600'}}},
+        y:{
+          grid:{color:'rgba(255,255,255,0.04)'},
+          ticks:{color:'#5a6478',font:{size:10},callback:function(v){return v+'%';}},
+          min:0, max:45
+        }
+      }
+    }
+  });
 }
 
 function setNielsenCompModo(modo, btn){
